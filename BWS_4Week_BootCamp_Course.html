@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BWS 4-Week Boot Camp | Full Course</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0a0e1a; --navy2:#10182c; --gold:#d4a017; --gold2:#f0a500;
+  --text:#e8e6e0; --muted:#9aa3b8; --card:#131c30; --border:#26314a;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+body{
+  background:var(--navy);
+  background-image: radial-gradient(circle at 20% 10%, rgba(212,160,23,0.06), transparent 40%),
+                     radial-gradient(circle at 80% 80%, rgba(240,165,0,0.05), transparent 40%);
+  color:var(--text); font-family:'Barlow',sans-serif; line-height:1.7; padding-bottom:60px;
+}
+header{
+  text-align:center; padding:40px 20px 20px; border-bottom:1px solid var(--border);
+  background:linear-gradient(180deg, var(--navy2), var(--navy));
+}
+header h1{font-family:'Bebas Neue',sans-serif; font-size:48px; letter-spacing:3px; color:var(--gold);}
+header p{color:var(--muted); margin-top:8px; font-family:'DM Mono',monospace; font-size:13px;}
+.nav{
+  display:flex; flex-wrap:wrap; gap:10px; justify-content:center; padding:20px;
+  position:sticky; top:0; background:rgba(10,14,26,0.95); backdrop-filter:blur(6px);
+  z-index:100; border-bottom:1px solid var(--border);
+}
+.nav button{
+  background:var(--card); color:var(--text); border:1px solid var(--border);
+  padding:10px 16px; border-radius:6px; cursor:pointer; font-family:'Barlow',sans-serif;
+  font-weight:600; font-size:13px; transition:.2s;
+}
+.nav button:hover{border-color:var(--gold);}
+.nav button.active{background:var(--gold); color:#1a1300; border-color:var(--gold);}
+.module{display:none; max-width:840px; margin:0 auto; padding:30px 20px;}
+.module.active{display:block; animation:fade .4s;}
+@keyframes fade{from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:translateY(0);}}
+.module h2{font-family:'Bebas Neue',sans-serif; font-size:32px; color:var(--gold2); letter-spacing:1px; margin-bottom:6px;}
+.module .meta{font-family:'DM Mono',monospace; font-size:12px; color:var(--muted); margin-bottom:24px;}
+.section{background:var(--card); border:1px solid var(--border); border-radius:10px; padding:22px 24px; margin-bottom:18px;}
+.section h3{font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--gold); letter-spacing:1px; margin-bottom:10px;}
+.section p{margin-bottom:10px; font-size:15px; color:var(--text);}
+.section ul{margin:10px 0 10px 22px; font-size:15px;}
+.section li{margin-bottom:6px;}
+.callout{
+  border-left:3px solid var(--gold); padding:10px 16px; margin:14px 0;
+  background:rgba(212,160,23,0.06); font-style:italic; color:var(--gold2); font-size:14px;
+}
+.quiz-box{background:var(--card); border:1px solid var(--gold); border-radius:10px; padding:22px 24px; margin-top:26px;}
+.quiz-box > h3{font-family:'Bebas Neue',sans-serif; font-size:26px; color:var(--gold); margin-bottom:4px;}
+.quiz-box .meta{margin-bottom:16px;}
+.q{margin-bottom:20px; border-bottom:1px solid var(--border); padding-bottom:16px;}
+.q:last-of-type{border-bottom:none;}
+.q p.qtext{font-weight:600; margin-bottom:10px; font-size:15px;}
+.opt{
+  display:block; background:var(--navy2); border:1px solid var(--border); border-radius:6px;
+  padding:10px 14px; margin-bottom:6px; cursor:pointer; font-size:14px; transition:.15s;
+}
+.opt:hover{border-color:var(--gold);}
+.opt input{margin-right:10px;}
+.opt.correct{border-color:#4caf50; background:rgba(76,175,80,0.12);}
+.opt.incorrect{border-color:#e05757; background:rgba(224,87,87,0.12);}
+.submit-btn{
+  background:var(--gold); color:#1a1300; border:none; padding:12px 26px; border-radius:6px;
+  font-weight:700; font-size:14px; cursor:pointer; letter-spacing:1px; margin-top:8px;
+}
+.submit-btn:hover{background:var(--gold2);}
+.score{
+  margin-top:16px; font-family:'DM Mono',monospace; font-size:16px; padding:14px;
+  border-radius:6px; background:var(--navy2); border:1px solid var(--border); display:none;
+}
+.progress{font-family:'DM Mono',monospace; font-size:12px; color:var(--muted); text-align:center; margin:20px 0;}
+.nav-arrows{display:flex; justify-content:space-between; margin-top:30px;}
+.nav-arrows button{
+  background:transparent; border:1px solid var(--gold); color:var(--gold); padding:10px 20px;
+  border-radius:6px; cursor:pointer; font-weight:600;
+}
+.nav-arrows button:hover{background:var(--gold); color:#1a1300;}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>BWS 4-WEEK BOOT CAMP</h1>
+  <p>FULL INTERACTIVE COURSE · 6 MODULES · QUIZ-VERIFIED · ~45+ MIN PER MODULE</p>
+</header>
+
+<div class="nav" id="navBar"></div>
+
+<!-- ================= MODULE 1 ================= -->
+<div class="module active" data-mod="0">
+  <h2>Module 1 — Week 1, Day 1: Introduction to the Major Blockchain Ecosystems</h2>
+  <div class="meta">ESTIMATED TIME: 45–55 MIN · READING + 12-QUESTION ASSESSMENT</div>
+
+  <div class="section">
+    <h3>Learning Objectives</h3>
+    <ul>
+      <li>Understand why Bitcoin, Ethereum, Solana, Sui, Stellar, and XRP each occupy a distinct strategic "role" in the digital asset economy.</li>
+      <li>Move from a "buy and hope" trading mindset to an operator mindset: assets as infrastructure, not lottery tickets.</li>
+      <li>Build a mental map of the boot camp's full four-week arc before going deep on any single chain.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>1.1 — Why "Ecosystems," Not "Coins"</h3>
+    <p>The biggest mistake a new entrant makes is treating every token as an interchangeable lottery ticket — buy low, hope for a pump, sell high. Serious operators instead ask a different question: <em>what role does this network play in the emerging financial system?</em> Each major chain in this curriculum was selected because it occupies a structurally distinct niche. When you understand the niche, price becomes a secondary signal — the primary signal is whether adoption of that niche is growing.</p>
+    <div class="callout">"Don't ask what to sell. Ask what should never be sold." — this operator mindset reframes every asset as either a productive reserve, a tool, or a speculative instrument, and treats each category differently.</div>
+  </div>
+
+  <div class="section">
+    <h3>1.2 — The Six Pillars of the Curriculum</h3>
+    <p><strong>Bitcoin — The Monetary Reserve.</strong> Bitcoin's job is not to "go up fast." Its job is to be the hardest, most credibly scarce form of collateral the world has ever produced. The boot camp treats BTC as the base layer of a personal balance sheet — the asset you borrow against, not the asset you trade away.</p>
+    <p><strong>Ethereum — Programmable Finance.</strong> The EVM (Ethereum Virtual Machine) turned blockchains from simple "send money" rails into general-purpose financial computers. Smart contracts allow lending markets, exchanges, derivatives, and tokenized real-world assets (RWAs) to run without a bank in the middle.</p>
+    <p><strong>Solana — High-Speed Consumer Finance.</strong> Solana's near-instant, near-free transactions make it the chain where retail-scale activity — memecoins, consumer trading apps, tokenized stocks — actually feels usable in real time.</p>
+    <p><strong>Sui — Next-Generation Consumer Infrastructure.</strong> Sui's object-centric architecture and parallel execution position it as a "next step" consumer layer-1, aimed at self-banking apps, fast trading, and real-world asset rails built from the ground up for mainstream UX.</p>
+    <p><strong>Stellar — Compliant Institutional Settlement.</strong> Stellar has spent over a decade quietly building relationships with payment processors and, more recently, major financial infrastructure players. Its role is cross-border settlement and tokenized asset rails that satisfy institutional compliance requirements.</p>
+    <p><strong>XRP / XRPL — The Bridge Currency.</strong> XRP was designed from day one as a bridge asset for cross-border settlement between financial institutions. The boot camp frames XRP's emerging DeFi layer (via projects like Doppler Finance) as the missing piece that finally lets the bridge-currency role generate on-chain yield.</p>
+  </div>
+
+  <div class="section">
+    <h3>1.3 — The "Don't Sell, Collateralize" Operating Principle</h3>
+    <p>This single principle threads through every week of the curriculum. Instead of selling an appreciating asset (which triggers capital gains taxes and permanently removes you from future upside), the operator borrows against it. The asset keeps working as collateral while the borrowed capital is deployed for living expenses, new opportunities, or further accumulation. This is the same logic that wealthy individuals and corporations have used with real estate and equities for generations — the boot camp's thesis is that Bitcoin and other digital assets are now being integrated into that same collateral infrastructure (mortgages, lending desks, institutional credit lines).</p>
+  </div>
+
+  <div class="section">
+    <h3>1.4 — Reading the Roadmap</h3>
+    <p>Across the four weeks, the curriculum builds outward in concentric circles: Week 1 establishes the map of ecosystems and the operator mindset. Week 2 goes deep on Bitcoin DeFi (BTCFi) — how a "store of value" asset becomes productive capital through protocols like Stacks, ALEX Lab, and VoltFi. Week 3 covers the EVM world (tokenization, AI agents, Base) and the Solana consumer stack (Solflare, Kamino, Pump.fun). Week 4 closes with Sui's self-banking stack and the institutional settlement story of Stellar and XRP. By the end, a student should be able to look at any new project and immediately ask: "Which of these six roles is this project trying to serve, and does it strengthen or compete with the others?"</p>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="quiz-box">
+    <h3>Module 1 Assessment</h3>
+    <div class="meta">12 questions · Select one answer per question · Click "Check Answers" when finished</div>
+    <div id="quiz0"></div>
+    <button class="submit-btn" onclick="gradeQuiz(0)">Check Answers</button>
+    <div class="score" id="score0"></div>
+  </div>
+
+  <div class="nav-arrows">
+    <button onclick="alert('This is the first module.')">← Previous</button>
+    <button onclick="showModule(1)">Next Module →</button>
+  </div>
+</div>
+
+<!-- ================= MODULE 2 ================= -->
+<div class="module" data-mod="1">
+  <h2>Module 2 — Week 2, Day 2: Bitcoin as Pristine Collateral & The Rise of BTCFi</h2>
+  <div class="meta">ESTIMATED TIME: 50–60 MIN · READING + 14-QUESTION ASSESSMENT</div>
+
+  <div class="section">
+    <h3>Learning Objectives</h3>
+    <ul>
+      <li>Define "pristine collateral" and explain why Bitcoin increasingly fits that definition.</li>
+      <li>Explain how Stacks, sBTC, and Dual Stacking turn idle BTC into yield-bearing capital without selling it.</li>
+      <li>Understand the BTC YOLO Vault as an automated, emotion-removing accumulation tool.</li>
+      <li>Explain VoltFi's gold spot-futures basis trade and why it's built on Stacks.</li>
+      <li>Describe ALEX Lab's role as Bitcoin DeFi's core liquidity infrastructure.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>2.1 — Bitcoin Beyond "Buy and Hold"</h3>
+    <p>The beginner mindset is: buy Bitcoin, wait, sell for more dollars. That's short-term trading logic. Serious operators treat Bitcoin differently — as a reserve asset whose primary value is its scarcity and credibility as collateral, not its short-term price chart. The question shifts from "when do I sell?" to "what can this asset secure for me while I hold it?"</p>
+  </div>
+
+  <div class="section">
+    <h3>2.2 — What "Pristine Collateral" Means</h3>
+    <p>"Pristine collateral" describes an asset that is universally trusted, free of counterparty risk, highly liquid, and accepted across the widest possible range of lending and settlement systems — historically, this was the role of gold or top-tier government bonds. Bitcoin's fixed supply, 24/7 global liquidity, and growing acceptance by regulated lenders (including mortgage underwriting) push it toward this same category. When an asset becomes pristine collateral, its primary use case shifts from "thing you trade" to "thing that backs other financial activity."</p>
+  </div>
+
+  <div class="section">
+    <h3>2.3 — Bitcoin DeFi: Turning Bitcoin Into Productive Capital</h3>
+    <p>For most of its history, Bitcoin sat idle in wallets — secure, but unproductive. Bitcoin DeFi (BTCFi) is the umbrella term for protocols that let BTC holders earn yield, borrow against their holdings, or supply liquidity — all while the underlying BTC's security guarantees remain anchored to the Bitcoin base chain. This is the financial equivalent of moving cash from under a mattress into an interest-bearing account, without giving up ownership of the cash.</p>
+  </div>
+
+  <div class="section">
+    <h3>2.4 — Stacks: The Bitcoin Layer Built for Productivity</h3>
+    <p>Stacks is a layer built around Bitcoin that lets developers write smart contracts whose finality is secured by Bitcoin itself. Its core innovation for this curriculum is <strong>sBTC</strong> — a 1:1 Bitcoin-backed representation that can move through DeFi protocols while remaining redeemable for real BTC. Critically, sBTC stays liquid: holders are not locking up their Bitcoin in a way that removes their ability to use it.</p>
+  </div>
+
+  <div class="section">
+    <h3>2.5 — Traditional Stacking vs. Dual Stacking</h3>
+    <p><strong>Traditional "stacking"</strong> (spelled with an "a") means locking STX tokens to help secure the network and, in return, earning actual BTC rewards. This was one of the original reasons serious Bitcoin holders paid attention to Stacks — a mechanism to earn BTC yield denominated in BTC, not in a separate token.</p>
+    <p><strong>Dual Stacking</strong> builds on this by allowing participants to combine STX stacking with sBTC participation simultaneously, layering a base yield with reward multipliers. The "base yield" is the steady BTC return from traditional stacking; the multiplier layer rewards users who also hold or deploy sBTC into the ecosystem, compounding returns for users who engage more deeply with BTCFi infrastructure.</p>
+    <div class="callout">Key takeaway: Dual Stacking doesn't replace traditional stacking — it stacks an additional reward layer on top of it, which is why the dashboard simplicity matters: users need a single clear view of compounding BTC-denominated yield.</div>
+  </div>
+
+  <div class="section">
+    <h3>2.6 — stSTX and Liquid Staking Derivatives</h3>
+    <p>stSTX represents a liquid-staking version of STX — when users stack STX, they receive stSTX in return, a token that continues to compound rewards while remaining tradable and usable as collateral elsewhere. There are three main stacking options covered: liquid stacking (via stSTX/stSTXbtc, which compounds automatically), native stacking (locking directly, with its own withdrawal process and lock-up cycle), and pooled approaches that lower the minimum STX requirement. The key distinction between native stacking and liquid stacking is the trade-off between simplicity/liquidity (stSTX) and direct control (native stacking, which has a defined withdrawal process and cycle-based unlock).</p>
+  </div>
+
+  <div class="section">
+    <h3>2.7 — The BTC YOLO Vault: Automating Discipline</h3>
+    <p>Emotional Bitcoin buying — chasing green candles, panic-selling red ones — is one of the biggest destroyers of long-term returns. The <strong>BTC YOLO Vault</strong> is an automated accumulation tool designed to remove emotion from the buying decision entirely. Rather than a human deciding "is now a good time to buy," the vault executes according to a programmed strategy, deploying capital systematically — including during bear markets, when emotional buyers are paralyzed by fear but historical accumulation has often been most rewarding. Automation creates discipline precisely because it removes the moment-by-moment decision that emotion would otherwise hijack.</p>
+  </div>
+
+  <div class="section">
+    <h3>2.8 — VoltFi and the Gold Spot-Futures Basis Trade</h3>
+    <p>VoltFi addresses a "missing piece" in Bitcoin DeFi: a way to access traditional, market-neutral yield strategies (like the gold spot-futures basis trade) from within a Bitcoin-collateralized environment. The <strong>basis trade</strong> involves simultaneously holding a spot position in an asset (like gold) and a short position in its futures contract, capturing the difference (the "basis") between spot and futures prices as a relatively low-risk yield source. VoltFi brings this institutional-style strategy on-chain. It chose to build on Stacks specifically because Stacks provides the Bitcoin-anchored security and sBTC liquidity needed to make this kind of structured product credible to Bitcoin-native users — gold matters here because it represents another "pristine collateral" asset class, and combining the two (Bitcoin's security with gold's basis-trade yield) appeals to users who think in terms of hard-asset portfolios.</p>
+  </div>
+
+  <div class="section">
+    <h3>2.9 — ALEX Lab: The Liquidity Backbone</h3>
+    <p>ALEX Lab functions as core financial infrastructure for the Bitcoin DeFi ecosystem — essentially the exchange and liquidity layer that makes other BTCFi protocols (like Stacks-based stacking products and VoltFi) usable. Liquidity is the foundation of everything in DeFi: without deep, reliable markets to swap assets in and out of positions, yield strategies can't function efficiently. ALEX Lab's role is to "build the financial machinery" — the trading pairs, pools, and routing — so that BTC, sBTC, STX, and stSTX can move efficiently between protocols.</p>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="quiz-box">
+    <h3>Module 2 Assessment</h3>
+    <div class="meta">14 questions · Select one answer per question</div>
+    <div id="quiz1"></div>
+    <button class="submit-btn" onclick="gradeQuiz(1)">Check Answers</button>
+    <div class="score" id="score1"></div>
+  </div>
+
+  <div class="nav-arrows">
+    <button onclick="showModule(0)">← Previous</button>
+    <button onclick="showModule(2)">Next Module →</button>
+  </div>
+</div>
+
+<!-- ================= MODULE 3 ================= -->
+<div class="module" data-mod="2">
+  <h2>Module 3 — Week 3, Day 1: The EVM Ecosystem, Tokenization, AI Agents & Base</h2>
+  <div class="meta">ESTIMATED TIME: 45–55 MIN · READING + 12-QUESTION ASSESSMENT</div>
+
+  <div class="section">
+    <h3>Learning Objectives</h3>
+    <ul>
+      <li>Explain what the EVM is and why it transformed blockchains into programmable economic systems.</li>
+      <li>Define Real World Assets (RWAs) and explain why tokenization is one of the biggest growth narratives in crypto.</li>
+      <li>Understand how AI agents are beginning to operate autonomously within DeFi, and the role of platforms like Venice AI.</li>
+      <li>Explain why Base has grown so quickly and what that means for the EVM ecosystem broadly.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>3.1 — Understanding the EVM</h3>
+    <p>The Ethereum Virtual Machine (EVM) is the runtime environment that executes smart contracts. Before Ethereum introduced programmable smart contracts at scale, most blockchains were essentially payment networks — good for sending value from A to B, but incapable of running logic. The EVM changed this by turning the blockchain into a general-purpose computer whose state (account balances, contract data) is updated according to code that anyone can deploy. This single innovation is the foundation for decentralized exchanges, lending markets, stablecoins, NFTs, and now tokenized real-world assets.</p>
+  </div>
+
+  <div class="section">
+    <h3>3.2 — Why the EVM Ecosystem Became So Dominant</h3>
+    <p>Because the EVM became a standard, dozens of other blockchains (Layer 2s and independent Layer 1s) chose to be "EVM-compatible" — meaning developers can deploy the same smart contract code across many networks with minimal changes. This created a massive network effect: tooling, audits, developer talent, and user wallets (like MetaMask) all work across the entire EVM ecosystem rather than being siloed to a single chain. The result is that "EVM" is less a single blockchain and more a shared standard spanning Ethereum mainnet and a constellation of Layer 2 networks.</p>
+  </div>
+
+  <div class="section">
+    <h3>3.3 — Tokenizing the World: The Rise of RWAs</h3>
+    <p>Real World Assets (RWAs) refers to traditional financial instruments — treasury bills, private credit, real estate, commodities — represented as tokens on a blockchain. Tokenization matters because it makes traditionally illiquid or access-restricted assets (like institutional private credit funds) tradable 24/7, divisible into small units, and usable as collateral in DeFi protocols. The growth of RWAs represents a convergence point: traditional finance institutions get blockchain's efficiency and programmability, while crypto-native users get access to yield sources backed by real-world cash flows rather than purely speculative token emissions.</p>
+  </div>
+
+  <div class="section">
+    <h3>3.4 — AI Agents and Venice AI</h3>
+    <p>A growing trend within the EVM ecosystem is the deployment of autonomous AI agents that can hold wallets, execute trades, manage DeFi positions, and interact with smart contracts without constant human input. Venice AI is highlighted as part of this trend — representing infrastructure that allows AI models to operate with a degree of autonomy and privacy on-chain. The significance for boot camp students: the combination of AI decision-making with DeFi's programmable infrastructure points toward a future where portfolio management, yield optimization, and even basic trading strategies can be executed by software agents operating continuously, not just by humans checking dashboards.</p>
+  </div>
+
+  <div class="section">
+    <h3>3.5 — Base and Why It Is Growing So Fast</h3>
+    <p>Base is an EVM-compatible Layer 2 network that has seen rapid growth in users and activity. Its growth is driven by a combination of low transaction costs (making frequent small transactions economically viable), strong integration with mainstream consumer apps and distribution channels, and the broader EVM network effect described above — developers can deploy proven Ethereum-based applications onto Base with minimal friction. For students, Base represents a case study in how a Layer 2 network can achieve rapid adoption by combining technical advantages (speed, cost) with distribution advantages (built-in user bases from its backing ecosystem).</p>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="quiz-box">
+    <h3>Module 3 Assessment</h3>
+    <div class="meta">12 questions · Select one answer per question</div>
+    <div id="quiz2"></div>
+    <button class="submit-btn" onclick="gradeQuiz(2)">Check Answers</button>
+    <div class="score" id="score2"></div>
+  </div>
+
+  <div class="nav-arrows">
+    <button onclick="showModule(1)">← Previous</button>
+    <button onclick="showModule(3)">Next Module →</button>
+  </div>
+</div>
+
+<!-- ================= MODULE 4 ================= -->
+<div class="module" data-mod="3">
+  <h2>Module 4 — Week 3, Day 2: The Solana Consumer Stack — Solflare, Kamino & Pump.fun</h2>
+  <div class="meta">ESTIMATED TIME: 50–60 MIN · READING + 14-QUESTION ASSESSMENT</div>
+
+  <div class="section">
+    <h3>Learning Objectives</h3>
+    <ul>
+      <li>Explain what Solflare is and how the xStocks integration brings tokenized equities into a Solana wallet.</li>
+      <li>Describe how the Kamino "banking system" works and its strategic shift toward stablecoins and RWAs.</li>
+      <li>Understand the Pump.fun bonding curve model, graduation to PumpSwap, and the associated risk picture.</li>
+      <li>Connect each project back to Solana's role as the high-speed consumer finance layer introduced in Module 1.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>4.1 — Solflare: More Than a Wallet</h3>
+    <p>Solflare began as a Solana wallet but has evolved into a consumer financial hub. A modern crypto wallet increasingly behaves like a mobile banking app — holding assets, but also offering trading, staking, and now access to tokenized traditional markets directly from the same interface.</p>
+  </div>
+
+  <div class="section">
+    <h3>4.2 — The xStocks Integration: Stocks Inside Your Wallet</h3>
+    <p>xStocks represents tokenized versions of traditional public equities, made accessible directly within Solflare. This means a user can hold exposure to traditional stock-market assets using the same wallet, the same seed phrase, and the same DeFi rails they use for crypto — collapsing the line between "crypto portfolio" and "stock portfolio" into a single interface. For boot camp purposes, this is a concrete example of the RWA tokenization trend (Module 3) reaching the retail consumer layer.</p>
+  </div>
+
+  <div class="section">
+    <h3>4.3 — Core DeFi Features Inside Solflare</h3>
+    <p>Beyond xStocks, Solflare bundles core DeFi functionality — swapping, staking, and access to lending/borrowing — directly into the wallet experience. This "everything in one app" approach lowers the friction for new users who would otherwise need to navigate multiple separate websites and protocols to do the same things.</p>
+  </div>
+
+  <div class="section">
+    <h3>4.4 — Magic AI: The Next Evolution in Wallet Intelligence</h3>
+    <p>Magic AI refers to an AI-assistant layer being built into Solflare, intended to help users navigate DeFi decisions, understand their portfolio, and execute actions through natural-language interaction rather than manually navigating menus. This mirrors the AI-agent trend discussed in Module 3, applied specifically at the consumer wallet level.</p>
+  </div>
+
+  <div class="section">
+    <h3>4.5 — The Airdrop Opportunity and Why Active Use Matters</h3>
+    <p>A recurring theme in the curriculum's "on-chain participation strategy" is that early, active users of a protocol are often rewarded later via token airdrops — free token distributions to addresses that demonstrated genuine usage before a project's native token existed or gained value. The practical implication: using a platform's real features (swaps, staking, new integrations like xStocks) isn't just about the immediate utility — it can also position a user for future airdrop rewards, which the curriculum treats as a legitimate (if speculative) component of an on-chain strategy.</p>
+  </div>
+
+  <div class="section">
+    <h3>4.6 — Kamino: What It Actually Is</h3>
+    <p>Kamino is a Solana-based lending and yield platform that has grown into something the curriculum describes as a "banking system" — users deposit assets to earn yield, and borrowers can draw against deposited collateral, with the protocol managing interest rates and risk parameters algorithmically.</p>
+  </div>
+
+  <div class="section">
+    <h3>4.7 — How the Kamino Banking System Works</h3>
+    <p>At its core, Kamino operates on the classic DeFi lending model: depositors supply assets into pools and earn interest; borrowers post collateral (often at a required overcollateralization ratio) and pay interest to borrow other assets. Kamino layers automated "vault" strategies on top of this base — for example, automatically managing concentrated liquidity positions or leveraged yield strategies so users don't have to manage them manually.</p>
+  </div>
+
+  <div class="section">
+    <h3>4.8 — Understanding the Numbers</h3>
+    <p>Kamino's growth is framed in terms of total value locked (TVL) and active deposits/borrows — the scale of capital flowing through the protocol is presented as evidence of Solana's broader claim to be a serious venue for consumer-scale DeFi, not just speculative trading.</p>
+  </div>
+
+  <div class="section">
+    <h3>4.9 — The Strategic Shift Toward Stablecoins and RWAs</h3>
+    <p>Kamino has been shifting its product focus toward stablecoins and real-world assets — offering yield products built around stable, dollar-denominated deposits and tokenized real-world collateral rather than purely volatile crypto assets. This mirrors the broader RWA trend from Module 3, but implemented on Solana's faster, cheaper rails.</p>
+  </div>
+
+  <div class="section">
+    <h3>4.10 — xStocks, Tokenized Equities, and Borrowing Against MSTRx</h3>
+    <p>Building on the xStocks integration covered with Solflare, Kamino extends the model further by allowing tokenized equity positions (such as an MSTRx-style tokenized exposure to a Bitcoin-holding company's stock) to be used as collateral for borrowing — meaning a user could hold tokenized equity exposure and borrow stablecoins against it without selling, directly applying the "don't sell, collateralize" principle to tokenized stocks rather than just Bitcoin.</p>
+  </div>
+
+  <div class="section">
+    <h3>4.11 — The Vault System and Institutional Capital</h3>
+    <p>Kamino's automated vault system is also positioned as an on-ramp for institutional capital — larger pools of money that want yield exposure to DeFi but prefer automated, risk-managed strategies over actively managing individual positions. Where Kamino is going, per the curriculum, is toward becoming a more comprehensive on-chain financial institution — combining lending, automated vaults, stablecoin products, and RWA collateral into a single platform.</p>
+  </div>
+
+  <div class="section">
+    <h3>4.12 — Pump.fun: Why It's in the Curriculum</h3>
+    <p>Pump.fun might seem like an outlier next to Kamino and Solflare's more "serious" financial infrastructure, but it's included because it demonstrates Solana's speed and cost advantages taken to their logical extreme — a platform where anyone can launch a token in seconds for almost nothing.</p>
+  </div>
+
+  <div class="section">
+    <h3>4.13 — What Pump.fun Actually Is, and the Bonding Curve</h3>
+    <p>Pump.fun is a token-launch platform built around a <strong>bonding curve</strong> — a pricing mechanism where a token's price increases automatically as more people buy it, following a predetermined mathematical curve, rather than relying on a traditional order book or initial liquidity pool set up by the creator. This removes the need for a project to raise upfront liquidity — the bonding curve itself provides liquidity from the very first buyer.</p>
+  </div>
+
+  <div class="section">
+    <h3>4.14 — Graduation, PumpSwap, the Numbers, the PUMP Token, and Risk</h3>
+    <p>When a token on Pump.fun's bonding curve reaches a certain market capitalization threshold, it "graduates" — its liquidity migrates from the bonding curve into PumpSwap, a standard decentralized exchange, where it trades like any other token with a conventional liquidity pool. The platform's scale (measured in total tokens launched and trading volume) is presented as evidence of how much retail speculative activity Solana can handle. Pump.fun itself eventually launched its own PUMP token. The curriculum is candid about the real risk picture: the vast majority of tokens launched on Pump.fun lose most or all of their value, and the platform is fundamentally a venue for high-risk speculation rather than investment. What Pump.fun means for Solana overall is that it stress-tests the network's throughput and demonstrates a use case (instant, low-cost token creation and trading) that simply isn't viable on slower, more expensive chains.</p>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="quiz-box">
+    <h3>Module 4 Assessment</h3>
+    <div class="meta">14 questions · Select one answer per question</div>
+    <div id="quiz3"></div>
+    <button class="submit-btn" onclick="gradeQuiz(3)">Check Answers</button>
+    <div class="score" id="score3"></div>
+  </div>
+
+  <div class="nav-arrows">
+    <button onclick="showModule(2)">← Previous</button>
+    <button onclick="showModule(4)">Next Module →</button>
+  </div>
+</div>
+
+<!-- ================= MODULE 5 ================= -->
+<div class="module" data-mod="4">
+  <h2>Module 5 — Week 4, Day 1: The Sui Network — Self-Banking, Trading & RWAs</h2>
+  <div class="meta">ESTIMATED TIME: 45–55 MIN · READING + 12-QUESTION ASSESSMENT</div>
+
+  <div class="section">
+    <h3>Learning Objectives</h3>
+    <ul>
+      <li>Explain why Sui "deserves its own day" within the curriculum's structure.</li>
+      <li>Understand the role of NAVI Protocol, Bluefin, and Matrixdock within the Sui financial stack.</li>
+      <li>Describe what "self-banking" means in the context of a fast Layer-1 network.</li>
+      <li>Synthesize how Sui's components combine into a complete financial stack.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>5.1 — Why Sui Deserves Its Own Day</h3>
+    <p>Sui is positioned in this curriculum as "the fastest Layer-1 in DeFi" — a network built from the ground up (rather than retrofitted from an earlier design) with an object-centric data model that allows for high parallel transaction throughput. The justification for giving Sui its own dedicated day, alongside giants like Ethereum and Solana, is that its architecture enables a new generation of consumer-facing financial applications: self-banking tools, fast trading venues, and real-world asset products that are positioned to compete directly with — and in some respects improve upon — the EVM and Solana ecosystems covered earlier.</p>
+  </div>
+
+  <div class="section">
+    <h3>5.2 — Self-Banking, Trading, and RWAs on Sui</h3>
+    <p>"Self-banking" describes the ability for an individual to access savings, lending, borrowing, and payment functionality directly through self-custodied wallets and smart contracts — without relying on a traditional bank intermediary. On Sui, this concept is realized through a stack of protocols, each handling a different function:</p>
+    <ul>
+      <li><strong>NAVI Protocol</strong> — functions as a lending and borrowing market on Sui, the self-banking layer where users can deposit assets to earn yield or borrow against collateral, analogous to Kamino's role on Solana or Aave's role on Ethereum.</li>
+      <li><strong>Bluefin</strong> — provides trading infrastructure on Sui, particularly for derivatives and perpetual futures, giving Sui users access to leveraged trading venues with the network's speed advantages.</li>
+      <li><strong>Matrixdock</strong> — focuses on tokenized real-world assets (continuing the RWA theme from Module 3), bringing tokenized treasury products and similar instruments onto Sui's rails.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>5.3 — Bringing It All Together: The Sui Financial Stack</h3>
+    <p>The combination of NAVI (lending/self-banking), Bluefin (trading/derivatives), and Matrixdock (RWAs) forms a vertically integrated financial stack on a single high-throughput Layer-1. The strategic framing for the boot camp is that Sui represents a "complete" financial stack built natively for speed and consumer UX from day one — rather than a patchwork of solutions bolted onto an older, slower base layer. For students, the key analytical exercise is comparing Sui's stack to the EVM stack (Module 3) and the Solana stack (Module 4): all three are converging on the same categories of product (lending, trading, RWAs), but with different architectural trade-offs around speed, cost, and ecosystem maturity.</p>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="quiz-box">
+    <h3>Module 5 Assessment</h3>
+    <div class="meta">12 questions · Select one answer per question</div>
+    <div id="quiz4"></div>
+    <button class="submit-btn" onclick="gradeQuiz(4)">Check Answers</button>
+    <div class="score" id="score4"></div>
+  </div>
+
+  <div class="nav-arrows">
+    <button onclick="showModule(3)">← Previous</button>
+    <button onclick="showModule(5)">Next Module →</button>
+  </div>
+</div>
+
+<!-- ================= MODULE 6 ================= -->
+<div class="module" data-mod="5">
+  <h2>Module 6 — Week 4, Day 2: Stellar & XRP — The Oldest Institutions in Crypto DeFi</h2>
+  <div class="meta">ESTIMATED TIME: 50–60 MIN · READING + 14-QUESTION ASSESSMENT</div>
+
+  <div class="section">
+    <h3>Learning Objectives</h3>
+    <ul>
+      <li>Explain why Stellar is described as one of the "oldest institutions" in crypto DeFi and what that means for institutional adoption.</li>
+      <li>Identify the role of Stellar projects: Freighter, Aquarius, Stronghold, Velo, and Blend.</li>
+      <li>Explain XRP's multiple simultaneous roles in the global financial system.</li>
+      <li>Describe how Doppler Finance brings DeFi yield to the XRP Ledger, and the significance of wallet integrations (XUMM, Ledger, Crossmark, D'CENT, MetaMask, WalletConnect).</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>6.1 — Stellar: The Oldest Institution in Crypto DeFi</h3>
+    <p>Stellar has operated for over a decade, building relationships with payment processors and financial institutions long before "DeFi" became a popular term. This longevity matters because it gives Stellar a head start on regulatory relationships and institutional trust — the kind of track record that newer chains have to build from scratch. The curriculum frames Stellar's current activity as a natural extension of its original mission: cross-border payments, now expanded into tokenized real-world assets and a broader financial ecosystem.</p>
+  </div>
+
+  <div class="section">
+    <h3>6.2 — The Stellar Project Stack</h3>
+    <ul>
+      <li><strong>Freighter</strong> — a wallet for the Stellar ecosystem, providing the self-custody access point users need to interact with Stellar-based applications, analogous to MetaMask for the EVM world or Solflare for Solana.</li>
+      <li><strong>Aquarius</strong> — a liquidity and incentive protocol on Stellar, helping route rewards to liquidity providers and deepen markets — playing a similar foundational role to ALEX Lab in the Bitcoin DeFi stack (Module 2).</li>
+      <li><strong>Stronghold</strong> — focused on stablecoin infrastructure and payment rails on Stellar, supporting the network's core cross-border payment mission with dollar-denominated assets.</li>
+      <li><strong>Velo</strong> — a credit and remittance protocol built on Stellar, expanding the network's reach into cross-border remittance corridors, particularly relevant to underserved and emerging markets.</li>
+      <li><strong>Blend</strong> — the lending and borrowing layer on Stellar, turning the network from a pure payment rail into a complete financial ecosystem by adding the credit/yield dimension that NAVI provides on Sui and Kamino provides on Solana.</li>
+    </ul>
+    <div class="callout">Pattern recognition: notice that every ecosystem in this curriculum (Bitcoin/Stacks, EVM/Base, Solana, Sui, Stellar) eventually develops the same core components — a wallet, a liquidity/incentive layer, a lending/borrowing protocol, and an RWA or stablecoin rail. The "winners" are differentiated by speed, cost, and institutional trust, not by having fundamentally different building blocks.</div>
+  </div>
+
+  <div class="section">
+    <h3>6.3 — XRP's Multiple Simultaneous Roles</h3>
+    <p>XRP is unusual because it occupies several roles at once within the global financial landscape:</p>
+    <ul>
+      <li>A <strong>bridge currency</strong> for global institutional payments, used by banks to settle cross-border transactions in seconds for fractions of a cent.</li>
+      <li>A <strong>deflationary asset</strong> with a fixed total supply and no new issuance — every transaction permanently burns a small amount of XRP.</li>
+      <li>The native token of a blockchain (the XRP Ledger, or XRPL) that has run reliably for over a decade and had a built-in decentralized exchange before Uniswap existed as a concept.</li>
+      <li>An asset attracting <strong>sovereign government interest</strong> for CBDC (Central Bank Digital Currency) infrastructure, leveraging XRPL's settlement capabilities.</li>
+      <li>The underlying asset of a <strong>rapidly growing DeFi ecosystem</strong> that is finally beginning to generate on-chain yield at scale.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>6.4 — Doppler Finance and the XRPL DeFi Layer</h3>
+    <p>For most of XRP's history, its primary use case was payments/settlement — it didn't have a robust DeFi layer generating yield the way Ethereum or Solana did. Doppler Finance is highlighted as the project finally building that missing DeFi layer directly on XRPL, allowing XRP holders to access lending, borrowing, and yield-generating activities natively — matching the DeFi capability that the payments infrastructure has lacked.</p>
+  </div>
+
+  <div class="section">
+    <h3>6.5 — The Wallet Layer: Connectivity as Infrastructure</h3>
+    <p>The platform serves a large user base (180,000+ users) and supports connectivity to both XRPL-native wallets (XUMM, Ledger, Crossmark, D'CENT) and Ethereum-based wallets (MetaMask, WalletConnect). This dual-compatibility is significant: it means the emerging XRPL DeFi ecosystem isn't isolated — it's being built to be accessible from the wallets that EVM users already have, lowering the barrier for cross-ecosystem capital to flow into XRP-based DeFi.</p>
+  </div>
+
+  <div class="section">
+    <h3>6.6 — Bringing It All Together: The XRP Ecosystem Play</h3>
+    <p>The "ecosystem play" for XRP is that it's no longer just a payments asset waiting for institutional adoption — it's simultaneously a deflationary scarce asset, a battle-tested ledger with a decade of uptime, a candidate for sovereign CBDC infrastructure, and now (via Doppler Finance and similar projects) a yield-generating DeFi asset. For a boot camp graduate, the synthesis exercise is to compare XRP's "bridge currency + emerging DeFi" positioning against Bitcoin's "pristine collateral" positioning (Module 2) — both are framed as assets whose primary value proposition extends well beyond short-term price speculation, rooted instead in their structural role within global finance.</p>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="quiz-box">
+    <h3>Module 6 Assessment</h3>
+    <div class="meta">14 questions · Select one answer per question</div>
+    <div id="quiz5"></div>
+    <button class="submit-btn" onclick="gradeQuiz(5)">Check Answers</button>
+    <div class="score" id="score5"></div>
+  </div>
+
+  <div class="nav-arrows">
+    <button onclick="showModule(4)">← Previous</button>
+    <button onclick="alert('You have reached the end of the course. Great work completing all 6 modules!')">Finish Course</button>
+  </div>
+</div>
+
+<div class="progress" id="progressLabel"></div>
+
+<script>
+// ===================== QUIZ DATA =====================
+const quizzes = [
+// MODULE 1
+[
+ {q:"What is the primary mistake the curriculum says beginners make?", o:["Holding assets too long","Treating every token as an interchangeable lottery ticket","Diversifying too much","Reading too many whitepapers"], a:1},
+ {q:"According to the operator mindset, what should you ask instead of 'what should I sell'?", o:["What should I buy next","What should never be sold","What is trending today","Which exchange has lowest fees"], a:1},
+ {q:"Which role is assigned to Bitcoin in the six-pillar framework?", o:["Programmable finance","High-speed consumer finance","Monetary reserve / pristine collateral","Compliant institutional settlement"], a:2},
+ {q:"Which network is described as 'programmable finance' via the EVM?", o:["Bitcoin","Ethereum","Stellar","XRP"], a:1},
+ {q:"Which network's role is 'high-speed consumer finance'?", o:["Solana","Stellar","Bitcoin","Sui"], a:0},
+ {q:"Sui's role in the curriculum is best described as:", o:["Monetary reserve","Bridge currency","Next-generation consumer infrastructure","Institutional settlement only"], a:2},
+ {q:"Stellar's assigned role is:", o:["High-speed memecoin trading","Compliant institutional settlement","Pristine collateral","AI agent infrastructure"], a:1},
+ {q:"XRP's curriculum role centers on:", o:["Bridge currency for cross-border payments","Smart contract platform for NFTs","Layer-2 scaling for Ethereum","Gold-backed stablecoin issuance"], a:0},
+ {q:"What does 'Don't sell, collateralize' mean in practice?", o:["Sell assets quickly before they lose value","Never invest in volatile assets","Borrow against an appreciating asset instead of selling it","Only hold cash"], a:2},
+ {q:"Why does borrowing against an asset avoid a tax event that selling would trigger?", o:["Loans are not taxable income and the asset is not disposed of","Borrowing is illegal so taxes don't apply","Crypto loans are always tax-free by law everywhere","Selling never triggers taxes either"], a:0},
+ {q:"In Week 2, the curriculum goes deep on:", o:["Sui self-banking","Bitcoin DeFi (BTCFi)","Stellar settlement","Pump.fun"], a:1},
+ {q:"What analytical question should a student ask about any new project, per Module 1?", o:["Is the founder famous?","Which of the six ecosystem roles does it serve, and does it compete or complement?","Is the token price under $1?","Does it have a Twitter account?"], a:1},
+],
+// MODULE 2
+[
+ {q:"What does 'pristine collateral' describe?", o:["A token with no trading volume","An asset that is universally trusted, liquid, and free of counterparty risk","Any asset under $1 in price","A coin that has never been hacked"], a:1},
+ {q:"What is BTCFi the umbrella term for?", o:["Bitcoin futures trading only","Protocols letting BTC holders earn yield or borrow while keeping BTC's security anchored to its base chain","Buying Bitcoin on centralized exchanges","Bitcoin mining pools"], a:1},
+ {q:"What is sBTC?", o:["A meme coin unrelated to Bitcoin","A 1:1 Bitcoin-backed asset usable in DeFi while remaining redeemable for BTC","A Bitcoin ETF ticker","A Solana-based wrapped token"], a:1},
+ {q:"Traditional 'stacking' (with an 'a') on Stacks involves:", o:["Locking STX to earn BTC rewards","Burning BTC permanently","Trading STX for ETH","Staking ETH to earn STX"], a:0},
+ {q:"What does Dual Stacking add on top of traditional stacking?", o:["Nothing, it's identical","An additional reward-multiplier layer via sBTC participation","A requirement to sell BTC","Removal of BTC rewards entirely"], a:1},
+ {q:"What is stSTX?", o:["A stablecoin pegged to gold","A liquid staking derivative received when stacking STX, which continues compounding while remaining usable","A Bitcoin mining certificate","An NFT collection"], a:1},
+ {q:"What is the key trade-off between native stacking and liquid stacking (stSTX)?", o:["Native stacking has no rewards at all","Liquid stacking offers liquidity/simplicity vs. native stacking's direct control with a defined withdrawal cycle","They are exactly the same","Native stacking is only for institutions"], a:1},
+ {q:"What problem is the BTC YOLO Vault designed to solve?", o:["High gas fees on Ethereum","Emotional, inconsistent Bitcoin buying decisions","Lack of Bitcoin supply","Slow block times"], a:1},
+ {q:"Why does the curriculum say bear markets matter for accumulation?", o:["Prices are always higher in bear markets","Automated strategies can buy systematically when emotional buyers are paralyzed by fear","Bear markets eliminate Bitcoin's supply cap","Exchanges are closed during bear markets"], a:1},
+ {q:"What is the 'gold spot-futures basis trade' that VoltFi brings on-chain?", o:["Buying gold and burying it","Holding a spot position while shorting the futures contract to capture the price difference as yield","Trading gold for Bitcoin 1:1","A loan collateralized only by silver"], a:1},
+ {q:"Why did VoltFi choose to build on Stacks?", o:["Stacks has no fees","Stacks provides Bitcoin-anchored security and sBTC liquidity that fit a Bitcoin-native structured product","Stacks is the fastest chain in existence","Stacks requires no smart contracts"], a:1},
+ {q:"What is ALEX Lab's primary role in the BTCFi stack?", o:["Issuing government bonds","Core liquidity and exchange infrastructure that other BTCFi protocols rely on","Mining new Bitcoin blocks","Running Bitcoin's consensus mechanism"], a:1},
+ {q:"Why is liquidity described as 'the foundation of everything' in DeFi?", o:["Without deep markets, yield strategies and swaps can't function efficiently","Liquidity determines block size","Liquidity is only relevant to NFTs","Liquidity has no effect on yield strategies"], a:0},
+ {q:"What is the overall thesis of Module 2 regarding Bitcoin?", o:["Bitcoin should be sold during bull markets","Bitcoin is transitioning from passive store of value to productive, yield-bearing collateral via BTCFi","Bitcoin DeFi is too risky to ever be useful","Bitcoin cannot be used as collateral"], a:1},
+],
+// MODULE 3
+[
+ {q:"What is the EVM?", o:["A type of mining hardware","The runtime environment that executes smart contracts, turning blockchains into programmable systems","A stablecoin issued by Ethereum","An exchange for tokenized stocks"], a:1},
+ {q:"Before smart contracts at scale, most blockchains were primarily:", o:["AI computation networks","Simple payment networks","Tokenized real estate platforms","Decentralized social media"], a:1},
+ {q:"Why did the EVM ecosystem become so dominant?", o:["It was the only blockchain that existed","Many chains became EVM-compatible, creating a network effect across tooling, wallets, and developer talent","All other blockchains were banned","It required no smart contracts"], a:1},
+ {q:"What does RWA stand for?", o:["Rapid Wallet Access","Real World Asset","Reserve Wealth Account","Random Withdrawal Algorithm"], a:1},
+ {q:"Why does tokenization of RWAs matter?", o:["It makes traditionally illiquid assets tradable 24/7, divisible, and usable as DeFi collateral","It eliminates the need for any regulation","It only applies to NFTs","It removes all yield from the asset"], a:0},
+ {q:"What convergence does RWA growth represent?", o:["Crypto replacing all banks immediately","Traditional finance gaining blockchain efficiency while crypto users gain access to real-world cash-flow-backed yield","Total separation of crypto and traditional finance","RWAs are unrelated to DeFi"], a:1},
+ {q:"What is the significance of AI agents in the EVM ecosystem?", o:["They can hold wallets and execute DeFi actions autonomously without constant human input","They are banned from interacting with smart contracts","They only generate marketing content","They replace the need for blockchains entirely"], a:0},
+ {q:"What is Venice AI highlighted for in the curriculum?", o:["Being a centralized exchange","Infrastructure enabling AI models to operate with autonomy and privacy on-chain","Issuing a stablecoin","Mining Bitcoin"], a:1},
+ {q:"What is Base?", o:["A standalone non-EVM blockchain","An EVM-compatible Layer 2 network that has grown rapidly","A hardware wallet brand","A gold-backed token"], a:1},
+ {q:"What two advantages are credited for Base's rapid growth?", o:["High fees and slow speed","Low transaction costs and strong distribution/integration with consumer apps","Lack of any smart contracts","Being incompatible with Ethereum tooling"], a:1},
+ {q:"What does 'EVM-compatible' allow developers to do?", o:["Deploy the same smart contract code across multiple networks with minimal changes","Avoid writing any code","Only operate on Ethereum mainnet","Disable smart contracts"], a:0},
+ {q:"What future does the combination of AI agents and DeFi infrastructure point toward, per the curriculum?", o:["The end of all blockchain activity","Continuous, software-driven portfolio management and yield optimization","Only manual human trading will remain viable","AI agents will replace blockchains entirely"], a:1},
+],
+// MODULE 4
+[
+ {q:"What did Solflare originally start as?", o:["A lending protocol","A Solana wallet","A centralized exchange","An NFT marketplace"], a:1},
+ {q:"What does the xStocks integration bring into Solflare?", o:["Tokenized versions of traditional public equities","New Layer-1 blockchains","Bitcoin mining contracts","Gold futures"], a:0},
+ {q:"What core DeFi features are bundled into Solflare?", o:["Only sending and receiving","Swapping, staking, and lending/borrowing access","Tax filing tools","Mining hardware management"], a:1},
+ {q:"What is 'Magic AI' in the context of Solflare?", o:["A mining algorithm","An AI-assistant layer helping users navigate DeFi via natural language","A new blockchain consensus mechanism","A hardware wallet"], a:1},
+ {q:"Why does active use of a platform matter for the airdrop opportunity?", o:["It has no effect on airdrops","Genuine early usage can position users for future token airdrop rewards","Airdrops are only given to developers","Active use disqualifies users from airdrops"], a:1},
+ {q:"What is Kamino best described as?", o:["A Solana-based lending/yield platform functioning like a 'banking system'","A meme coin launchpad only","A hardware wallet manufacturer","An NFT marketplace"], a:0},
+ {q:"In Kamino's lending model, what must borrowers typically do?", o:["Nothing, loans are unsecured","Post collateral, often at an overcollateralization ratio, and pay interest","Pay no interest ever","Provide a government ID only"], a:1},
+ {q:"What do Kamino's automated vaults do?", o:["Manage strategies like concentrated liquidity or leveraged yield automatically","Permanently lock all user funds with no withdrawal","Mine new tokens","Only hold cash with zero yield"], a:0},
+ {q:"How is Kamino's growth measured in the curriculum?", o:["Number of memes created","Total value locked (TVL) and active deposits/borrows","Number of Twitter followers","Number of validators only"], a:1},
+ {q:"What strategic shift has Kamino made recently?", o:["Toward stablecoins and real-world assets","Away from all yield products","Toward exclusively NFT trading","Toward shutting down lending entirely"], a:0},
+ {q:"What does borrowing against MSTRx-style tokenized equity demonstrate?", o:["The 'don't sell, collateralize' principle applied to tokenized stocks","That tokenized stocks cannot be used in DeFi","That Kamino only accepts Bitcoin","That equities can never be tokenized"], a:0},
+ {q:"What is the core mechanism behind Pump.fun?", o:["A traditional order book","A bonding curve where price rises automatically as more people buy","A fixed price set by the founder forever","A lottery system"], a:1},
+ {q:"What happens when a Pump.fun token 'graduates'?", o:["It is destroyed permanently","Its liquidity migrates to PumpSwap, a standard DEX with a conventional liquidity pool","It becomes a stablecoin","It merges with Bitcoin"], a:1},
+ {q:"What does the curriculum say about the real risk picture of Pump.fun tokens?", o:["All tokens guarantee profit","The vast majority lose most or all of their value; it's high-risk speculation","There is no risk at all","Only institutions can lose money"], a:1},
+],
+// MODULE 5
+[
+ {q:"What architectural feature gives Sui its speed advantage?", o:["A proof-of-work mining model","An object-centric data model enabling high parallel transaction throughput","Centralized servers only","No smart contract support"], a:1},
+ {q:"Why does Sui 'deserve its own day' in the curriculum?", o:["It has no relevance to DeFi","Its architecture enables a new generation of self-banking, trading, and RWA apps competing with EVM and Solana","It is identical to Bitcoin","It cannot process transactions"], a:1},
+ {q:"What does 'self-banking' mean in this context?", o:["Using a traditional bank app","Accessing savings, lending, borrowing, and payments via self-custodied wallets/smart contracts without a bank intermediary","Printing physical currency","Opening a brokerage account"], a:1},
+ {q:"What is NAVI Protocol's role on Sui?", o:["A lending and borrowing market, the self-banking layer","A meme coin launchpad","A hardware wallet","A mining pool"], a:0},
+ {q:"What does Bluefin provide on Sui?", o:["Tokenized treasuries only","Trading infrastructure, particularly derivatives and perpetual futures","Email services","Social media integration"], a:1},
+ {q:"What is Matrixdock focused on?", o:["Tokenized real-world assets like treasury products","Bitcoin mining","NFT art generation","Layer 1 consensus only"], a:0},
+ {q:"NAVI's role on Sui is most analogous to which other project covered earlier?", o:["Pump.fun on Solana","Kamino on Solana / Blend on Stellar","Freighter on Stellar","Bluefin on Sui"], a:1},
+ {q:"What do NAVI, Bluefin, and Matrixdock together form?", o:["A vertically integrated financial stack on Sui (lending, trading, RWAs)","Three competing blockchains","A single NFT collection","A government regulatory body"], a:0},
+ {q:"How does the curriculum frame Sui relative to EVM and Solana?", o:["As irrelevant to the comparison","As a 'complete' financial stack built natively for speed and consumer UX from day one, vs. patchwork solutions on older bases","As strictly worse in every category","As identical with no differences"], a:1},
+ {q:"What categories of product are converging across Bitcoin/Stacks, EVM, Solana, and Sui ecosystems?", o:["Lending, trading, and RWAs, with different speed/cost/maturity trade-offs","Only meme coins","Only mining","Only NFTs"], a:0},
+ {q:"What is the key analytical exercise suggested for comparing ecosystem stacks?", o:["Memorizing token tickers only","Comparing architectural trade-offs around speed, cost, and ecosystem maturity for similar product categories","Ignoring all differences between chains","Picking the chain with the lowest current price"], a:1},
+ {q:"Sui's positioning as 'next-generation consumer infrastructure' (Module 1) is realized through which Module 5 components?", o:["Mining hardware only","NAVI, Bluefin, and Matrixdock forming a self-banking/trading/RWA stack","A single centralized app","Government bonds only"], a:1},
+],
+// MODULE 6
+[
+ {q:"Why is Stellar called one of the 'oldest institutions' in crypto DeFi?", o:["It launched yesterday","It has operated for over a decade with long-standing payment processor and institutional relationships","It has no products","It is the newest blockchain"], a:1},
+ {q:"What is Stellar's original core mission?", o:["Meme coin trading","Cross-border payments","Gaming","NFT minting"], a:1},
+ {q:"What is Freighter?", o:["A wallet for the Stellar ecosystem","A Bitcoin mining rig","A stablecoin","A derivatives exchange"], a:0},
+ {q:"What role does Aquarius play on Stellar?", o:["A liquidity and incentive protocol routing rewards to liquidity providers","A government regulator","A hardware wallet","A social media app"], a:0},
+ {q:"What is Stronghold focused on?", o:["NFT art","Stablecoin infrastructure and payment rails","Bitcoin mining","AI agents"], a:1},
+ {q:"What does Velo provide on Stellar?", o:["A credit and remittance protocol for cross-border corridors","A meme coin launchpad","A Layer 2 for Ethereum","A gaming engine"], a:0},
+ {q:"What does Blend add to the Stellar ecosystem?", o:["A lending and borrowing layer, turning Stellar into a complete financial ecosystem","A new consensus mechanism only","A ban on stablecoins","A centralized custodian"], a:0},
+ {q:"What pattern does the curriculum highlight across all the ecosystems studied (Bitcoin, EVM, Solana, Sui, Stellar)?", o:["Each has completely unique, non-comparable components","Each eventually develops a wallet, a liquidity/incentive layer, a lending/borrowing protocol, and an RWA/stablecoin rail","None of them have wallets","Only Bitcoin has DeFi"], a:1},
+ {q:"Which of the following is NOT one of XRP's described simultaneous roles?", o:["Bridge currency for institutional payments","A deflationary fixed-supply asset","A meme coin with unlimited supply","Candidate for sovereign CBDC infrastructure"], a:2},
+ {q:"What unique historical feature does the XRP Ledger (XRPL) have?", o:["It has run reliably for over a decade and had a built-in DEX before Uniswap existed as a concept","It launched after Solana","It has no native token","It cannot settle transactions"], a:0},
+ {q:"What does Doppler Finance provide for XRP?", o:["A DeFi layer on XRPL enabling lending, borrowing, and yield generation natively","A Bitcoin mining service","A new consensus algorithm for Bitcoin","A way to delete XRP from circulation"], a:0},
+ {q:"Which wallets does the platform support for XRPL connectivity?", o:["XUMM, Ledger, Crossmark, D'CENT","Only MetaMask","Only hardware wallets from one brand","No wallets at all"], a:0},
+ {q:"Why is dual-compatibility with Ethereum wallets (MetaMask, WalletConnect) significant for XRPL DeFi?", o:["It isolates XRPL from other ecosystems","It lowers the barrier for cross-ecosystem capital to flow into XRP-based DeFi using wallets EVM users already have","It has no significance","It prevents any DeFi activity"], a:1},
+ {q:"What synthesis comparison does Module 6 suggest making?", o:["XRP's 'bridge currency + emerging DeFi' positioning vs. Bitcoin's 'pristine collateral' positioning","Comparing only meme coin prices","Comparing mining difficulty across chains","No comparison is suggested"], a:0},
+],
+];
+
+// ===================== RENDER QUIZZES =====================
+function renderQuiz(idx){
+  const container = document.getElementById('quiz'+idx);
+  quizzes[idx].forEach((item, qi)=>{
+    const qDiv = document.createElement('div');
+    qDiv.className = 'q';
+    const p = document.createElement('p');
+    p.className = 'qtext';
+    p.textContent = (qi+1) + '. ' + item.q;
+    qDiv.appendChild(p);
+    item.o.forEach((opt, oi)=>{
+      const label = document.createElement('label');
+      label.className = 'opt';
+      label.id = 'm'+idx+'_q'+qi+'_o'+oi;
+      label.innerHTML = '<input type="radio" name="m'+idx+'_q'+qi+'" value="'+oi+'"> '+opt;
+      qDiv.appendChild(label);
+    });
+    container.appendChild(qDiv);
+  });
+}
+for(let i=0;i<quizzes.length;i++){ renderQuiz(i); }
+
+function gradeQuiz(idx){
+  let score = 0;
+  const total = quizzes[idx].length;
+  quizzes[idx].forEach((item, qi)=>{
+    const selected = document.querySelector('input[name="m'+idx+'_q'+qi+'"]:checked');
+    for(let oi=0; oi<item.o.length; oi++){
+      const label = document.getElementById('m'+idx+'_q'+qi+'_o'+oi);
+      label.classList.remove('correct','incorrect');
+      if(oi === item.a){ label.classList.add('correct'); }
+      else if(selected && parseInt(selected.value)===oi){ label.classList.add('incorrect'); }
+    }
+    if(selected && parseInt(selected.value) === item.a) score++;
+  });
+  const scoreDiv = document.getElementById('score'+idx);
+  scoreDiv.style.display = 'block';
+  const pct = Math.round((score/total)*100);
+  let msg = score+' / '+total+' correct ('+pct+'%)';
+  if(pct >= 80) msg += ' — Excellent! You have mastered this module.';
+  else if(pct >= 60) msg += ' — Good work. Review the highlighted sections and try again.';
+  else msg += ' — Review the module content above and retake the quiz.';
+  scoreDiv.textContent = msg;
+}
+
+// ===================== NAVIGATION =====================
+const moduleNames = [
+  '1. Intro & Roadmap',
+  '2. Bitcoin & BTCFi',
+  '3. EVM, RWAs & Base',
+  '4. Solana Stack',
+  '5. Sui Network',
+  '6. Stellar & XRP'
+];
+const navBar = document.getElementById('navBar');
+moduleNames.forEach((name, i)=>{
+  const btn = document.createElement('button');
+  btn.textContent = name;
+  btn.onclick = ()=>showModule(i);
+  btn.id = 'navbtn'+i;
+  navBar.appendChild(btn);
+});
+
+function showModule(idx){
+  document.querySelectorAll('.module').forEach(m=>m.classList.remove('active'));
+  document.querySelector('.module[data-mod="'+idx+'"]').classList.add('active');
+  document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));
+  document.getElementById('navbtn'+idx).classList.add('active');
+  document.getElementById('progressLabel').textContent = 'MODULE '+(idx+1)+' OF 6 · '+moduleNames[idx].toUpperCase();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+showModule(0);
+</script>
+
+</body>
+</html>
